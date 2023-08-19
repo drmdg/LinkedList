@@ -117,6 +117,47 @@ function LinkedList(data){
             }
             return str;
 
+        },
+        insert(value,index){
+            val=Nodo(value);
+            let atual=this.listahead.nextNodo;
+            let aux=this.listahead;
+            let i=1;
+            if(index==0){
+                val.nextNodo=this.listahead;
+                this.listahead=val;
+            }else{
+                while(i<index){
+                    if(atual==null){
+                        return;
+                    }
+                    atual=atual.nextNodo;
+                    aux=aux.nextNodo;
+                    i++;
+                }
+                aux.nextNodo=val;
+                val.nextNodo=atual;
+            }
+
+        },
+        removeAt(index){
+            let atual=this.listahead.nextNodo;
+            let aux=this.listahead;
+            let i=1;
+            if(index==0){
+                this.listahead=this.listahead.nextNodo;
+            }else{
+                while(i<index){
+                    if(atual.nextNodo==null){
+                        return;
+                    }
+                    atual=atual.nextNodo;
+                    aux=aux.nextNodo;
+                    i++;
+                }
+                aux.nextNodo=atual.nextNodo;
+            }
+
         }
 
 
@@ -130,6 +171,5 @@ let x = LinkedList('15');
   x.append('25');
   x.append('38');
   x.prepend('23');
-  x.imprime();
-  x.tostring();
   
+  x.imprime();
